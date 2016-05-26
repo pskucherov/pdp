@@ -46,6 +46,30 @@ apt-get install -y mongodb-org
 service mongod start
 ```
 
+## Настройка mongodb
+```
+cd ~
+mkdir .keyfile
+cd .keyfile
+openssl rand -base64 741 > mongodb_keyfile
+chmod 600 mongodb_keyfile
+
+vim /etc/mongod.conf
+security:
+    keyFile: /Users/yourusername/.keyfile/mongodb_keyfile
+
+mongod
+mongo
+use admin
+db.createUser(
+  {
+    user: "admin",
+    pwd: "password",
+    roles: [ { role: "root", db: "admin" } ]
+  }
+);
+```
+
 ## Установит git
 ```
 add-apt-repository ppa:git-core/ppa
