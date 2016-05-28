@@ -57,6 +57,7 @@ chmod 600 mongodb_keyfile
 vim /etc/mongod.conf
 security:
     keyFile: /Users/yourusername/.keyfile/mongodb_keyfile
+    authorization: enabled
 
 mongod
 mongo
